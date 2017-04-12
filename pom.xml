@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+<!-- 	<parent> -->
+<!-- 	    <groupId>com.lefu</groupId> -->
+<!-- 	    <artifactId>parent</artifactId> -->
+<!-- 	    <version>1.0.5</version> -->
+<!--   	</parent> -->
+
+	<groupId>com.lefu</groupId>
+	<artifactId>letou</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>letou</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!--   			<groupId>com.lefu</groupId> -->
+<!--   			<artifactId>commons-cache</artifactId> -->
+<!--   			<version>1.0.26</version> -->
+<!--   		</dependency> -->
+<!--   		<dependency> -->
+<!--   			<groupId>com.lefu</groupId> -->
+<!--   			<artifactId>CommonUtil</artifactId> -->
+<!--   			<version>1.0.8</version> -->
+<!--   		</dependency> -->
+	</dependencies>
+	<modules>
+        <!-- 公共包一定要放在最前面 -->
+		<module>letou-common</module>
+		<module>letou-web</module>
+        <module>letou-advertisers</module>
+		<module>letou-adserver</module>
+		<module>letou-monitor</module>
+    	<module>letou-datasender</module>
+        <module>letou-report</module>
+        <module>letou-image</module>
+	</modules>
+</project>

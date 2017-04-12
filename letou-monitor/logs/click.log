@@ -1,0 +1,5 @@
+INFO 2016-06-12 10:51:06 requestURI:/c?app=0&p=1&did=1234&bid=2&industry=530&adId=2&regionId=7&o=http://baidu.com
+INFO 2016-06-12 10:51:23 requestURI:/c?app=0&p=1&did=1234&bid=2&industry=530&adId=2&regionId=7&o=http://baidu.com
+INFO 2016-06-12 10:51:51 requestURI:/c?app=0&p=1&did=1234&bid=2&industry=530&adId=2&regionId=7&o=http://baidu.com
+INFO 2016-06-12 11:25:43 requestURI:/c?app=0&p=1&did=1234&bid=1&industry=530&adId=2&regionId=7&o=http://baidu.com
+INFO 2016-06-12 11:25:48 requestURI:/c?app=0&p=1&did=1234&bid=3&industry=530&adId=2&regionId=7&o=http://baidu.com
