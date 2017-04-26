@@ -21,88 +21,43 @@
 
 	<profiles>
 		<profile>
-			<id>production</id>
-			<build>
-				<resources>
-					<resource>
-						<directory>src/main/resources</directory>
-					</resource>
-					<resource>
-						<directory>src/main/conf</directory>
-						<excludes>
-							<exclude>redis.properties</exclude>
-							<exclude>server.properties</exclude>
-						</excludes>
-						<targetPath>../conf</targetPath>
-					</resource>
-					<resource>
-						<directory>src/main/production/conf</directory>
-						<filtering>true</filtering>
-						<targetPath>../conf</targetPath>
-					</resource>
-				</resources>
-			</build>
+			<id>dev</id>
+			<properties>
+				<mode>dev</mode>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 		</profile>
 		<profile>
 			<id>test</id>
-			<build>
-				<resources>
-					<resource>
-						<directory>src/main/resources</directory>
-						<excludes>
-							<exclude>redis.properties</exclude>
-							<exclude>server.properties</exclude>
-						</excludes>
-						<targetPath>../conf</targetPath>
-					</resource>
-					<resource>
-						<directory>src/main/conf</directory>
-						<targetPath>../conf</targetPath>
-					</resource>
-					<resource>
-						<directory>src/main/test/conf</directory>
-						<filtering>true</filtering>
-						<targetPath>../conf</targetPath>
-					</resource>
-				</resources>
-			</build>
+			<properties>
+				<mode>test</mode>
+			</properties>
 		</profile>
 		<profile>
-			<id>dev</id>
-			<build>
-				<resources>
-					<resource>
-						<directory>src/main/resources</directory>
-					</resource>
-					<resource>
-						<directory>src/main/conf</directory>
-						<excludes>
-							<exclude>redis.properties</exclude>
-							<exclude>server.properties</exclude>
-						</excludes>
-						<targetPath>../conf</targetPath>
-					</resource>
-					<resource>
-						<directory>src/main/dev/conf</directory>
-						<filtering>true</filtering>
-						<targetPath>../conf</targetPath>
-					</resource>
-				</resources>
-			</build>
+			<id>release</id>
+			<properties>
+				<mode>release</mode>
+			</properties>
 		</profile>
 	</profiles>
 
 
 	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
+		<finalName>adserver-${version}</finalName>
+		<filters>
+			<filter>src/main/resources/mode/${mode}/redis.properties</filter>
+			<filter>src/main/resources/mode/${mode}/server.properties</filter>
+		</filters>
+		
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>src/main/conf</directory>
 				<filtering>true</filtering>
-				<targetPath>../conf</targetPath>
+				<includes>
+					<include>**/*</include>
+				</includes>
 			</resource>
 		</resources>
 		<plugins>
@@ -111,8 +66,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -131,13 +86,31 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
 				<configuration>
-					<descriptors>
-						<descriptor>release.xml</descriptor>
-					</descriptors>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin> 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-assembly-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<descriptors> -->
+<!-- 						<descriptor>release.xml</descriptor> -->
+<!-- 					</descriptors> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 
